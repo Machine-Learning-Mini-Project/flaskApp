@@ -60,56 +60,57 @@ def plag_cosine():
     return jsonify(res), 200
 
 
+#uncomment if you make it work
 '''
 POST req JSON format:
 {
     answer: string
 }
 '''
-@plagbp.route('/copyleaks', methods=(['POST']))
-def plag_copyleaks():
-    if request.is_json:
-        json_data = request.json
-        answer = json_data['answer']
-    else:
-        error = {'message': 'Invalid JSON data'}
-        return jsonify(error), 400
+# @plagbp.route('/copyleaks', methods=(['POST']))
+# def plag_copyleaks():
+#     if request.is_json:
+#         json_data = request.json
+#         answer = json_data['answer']
+#     else:
+#         error = {'message': 'Invalid JSON data'}
+#         return jsonify(error), 400
     
-    utils.copyleaksApi(answer)
+#     utils.copyleaksApi(answer)
 
-    response = make_response("OK", 200)
-    return response
+#     response = make_response("OK", 200)
+#     return response
 
-@plagbp.route('/copyleaks/completed', methods=(['POST']))
-def copyleaksTest():
+# @plagbp.route('/copyleaks/completed', methods=(['POST']))
+# def copyleaksTest():
 
-    if (request.method == "POST"):
-        json_data = request.json
-        res = json_data
+#     if (request.method == "POST"):
+#         json_data = request.json
+#         res = json_data
 
-    print(res)
-    response = make_response("OK", 200)
-    return response
+#     print(res)
+#     response = make_response("OK", 200)
+#     return response
 
 
-@plagbp.route('/copyleaks/webhook/completed', methods=(['POST']))
-def copyleaksComp():
+# @plagbp.route('/copyleaks/webhook/completed', methods=(['POST']))
+# def copyleaksComp():
 
-    if (request.method == "POST"):
-        json_data = request.json
-        res = json_data['results']['score']
+#     if (request.method == "POST"):
+#         json_data = request.json
+#         res = json_data['results']['score']
 
-    print(res['aggregatedScore'])
-    response = make_response("OK", 200)
-    return response
+#     print(res['aggregatedScore'])
+#     response = make_response("OK", 200)
+#     return response
 
-@plagbp.route('/copyleaks/webhook/creditschecked', methods=(['POST']))
-def copyleaksCheck():
-    if (request.method == "POST"):
-        json_data = request.json
-        res = json_data['credits']
+# @plagbp.route('/copyleaks/webhook/creditschecked', methods=(['POST']))
+# def copyleaksCheck():
+#     if (request.method == "POST"):
+#         json_data = request.json
+#         res = json_data['credits']
 
-    print(res)
+#     print(res)
 
-    response = make_response("OK", 200)
-    return response
+#     response = make_response("OK", 200)
+#     return response
