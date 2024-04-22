@@ -178,7 +178,18 @@ def codeQ():
 
     print(type(messages.data[0].content[0].text.value))
     print(messages.data[0].content[0].text.value)   
-    res = json.loads(messages.data[0].content[0].text.value)
+    start_index = messages.data[0].content[0].text.value.find('{')
+    end_index = messages.data[0].content[0].text.value.rfind('}') + 1
+
+    if '```json' in messages.data[0].content[0].text.value:
+        start_index = messages.data[0].content[0].text.value.find('```json') + len('```json') + 1
+        end_index = messages.data[0].content[0].text.value.find('```', start_index)
+        
+        
+
+    json_str = messages.data[0].content[0].text.value[start_index:end_index]
+
+    res = json.loads(json_str)
 
 
     return jsonify(res), 200
