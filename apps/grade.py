@@ -135,7 +135,12 @@ def codeQ():
                     model="gpt-4-turbo",
                     tools=[{"type": "code_interpreter"}, 
                             ],
-                    file_ids=[file.id]
+                    tool_resources={
+                        "code_interpreter": {
+                            "file_ids" : [file.id]
+                        }
+                    }
+                    
                 )
 
     thread = openAiClient.beta.threads.create()
